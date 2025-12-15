@@ -5,12 +5,12 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; // Importar por si acaso
 
 @Component({
-selector: 'app-root',
-standalone: true,
+    selector: 'app-root',
+    standalone: true,
 
-imports: [FormsModule, CommonModule],
+    imports: [FormsModule, CommonModule],
 
-template: `
+    template: `
 
 <div style="max-width: 400px; margin: 50px auto; font-family: sans-serif; padding: 20px;
 
@@ -55,30 +55,30 @@ style="background: #f8d7da; color: #721c24; padding: 10px; margin-top: 10px;"
 })
 
 export class AppComponent {
-http = inject(HttpClient);
-email = signal('');
-password = signal('');
-successMsg = signal('');
-errorMsg = signal('');
-login() {
-this.successMsg.set('');
-this.errorMsg.set('');
+    http = inject(HttpClient);
+    email = signal('');
+    password = signal('');
+    successMsg = signal('');
+    errorMsg = signal('');
+    login() {
+        this.successMsg.set('');
+        this.errorMsg.set('');
 
-this.http.post('http://localhost:3000/api/login', {
+        this.http.post('http://localhost:3000/api/login', {
 
-email: this.email(),
-password: this.password()
-}).subscribe({
+            email: this.email(),
+            password: this.password()
+        }).subscribe({
 
-next: (res: any) => this.successMsg.set(res.message),
+            next: (res: any) => this.successMsg.set(res.message),
 
-error: (err) => {
+            error: (err) => {
 
-// En un caso real esto es string, pero si el backend manda HTML malicioso...
+                // En un caso real esto es string, pero si el backend manda HTML malicioso...
 
-this.errorMsg.set(err.error);
+                this.errorMsg.set(err.error);
 
-}
-});
-}
+            }
+        });
+    }
 }

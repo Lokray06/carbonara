@@ -6,7 +6,7 @@
   ],
   "parserOptions": {
     "ecmaVersion": 12,
-    "sourceType": "module"  // <--- ¡Esta es la línea mágica que faltaba!
+    "sourceType": "module"
   },
   "rules": {
     "no-unsafe-regex/no-unsafe-regex": "error",
